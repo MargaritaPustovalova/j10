@@ -1,105 +1,83 @@
-ackage ru.netology;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+package ru.netology;
 
 
+public class Radio {
+    private int currentStation;
+    private int currentVolume;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int maxStation = 10;
+    private int minStation = 0;
 
-
-
-class RadioTest {
-    Radio radio = new Radio();
-
-    @Test
-    public void shouldSetStation() {
-        radio.setCurrentStation(10);
-        Assertions.assertEquals(10, radio.getCurrentStation());
+    public Radio(int currentStation, int currentVolume, int minStation, int maxStation, int maxVolume, int minVolume) {
+        this.currentStation = currentStation;
+        this.currentVolume = currentVolume;
+        this.maxStation = maxStation;
+        this.minStation = minStation;
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
     }
 
-    @Test
-    public void shouldNotSetStationOverMax() {
-        radio.setCurrentStation(12);
-        Assertions.assertEquals(0, radio.getCurrentStation());
+    public Radio() {
+
     }
 
-    @Test
-    public void shouldNotSetStationUnderMin() {
-        radio.setCurrentStation(-12);
-        Assertions.assertEquals(0, radio.getCurrentStation());
-    }
-
-    @Test
-    public void shouldIncreaseStation() {
-        radio.setCurrentStation(9);
-        radio.shouldIncreaseStation();
-        Assertions.assertEquals(10, radio.getCurrentStation());
-    }
-
-    @Test
-    public void shouldIncreaseStation0() {
-        radio.setCurrentStation(10);
-        radio.shouldIncreaseStation();
-        Assertions.assertEquals(0, radio.getCurrentStation());
-    }
-
-    @Test
-    public void shouldDecreaseStation() {
-        radio.setCurrentStation(1);
-        radio.shouldReduceStation();
-        Assertions.assertEquals(0, radio.getCurrentStation());
-    }
-
-
-    @Test
-    public void numberStationEntered() {
-        int enteredNumberStation = 4;
-        radio.setCurrentStation(enteredNumberStation);
-        Assertions.assertEquals( 4, radio.getCurrentStation());
-    }
-
-
-    @Test
-    public void shouldDecreaseStationWhenCurrent0() {
-        radio.shouldReduceStation();
-        Assertions.assertEquals(10, radio.getCurrentStation());
-    }
-
-    @Test
-    public void shouldNotDecreaseVolume0() {
-        radio.shouldReduceVolume();
-        Assertions.assertEquals(0, radio.getCurrentVolume());
-    }
-
-    @Test
-    public void shouldDecreaseVolume() {
-        radio.setCurrentVolume(1);
-        radio.shouldReduceVolume();
-        Assertions.assertEquals(0, radio.getCurrentVolume());
-    }
-
-    @Test
     public void shouldIncreaseVolume() {
-        radio.setCurrentVolume(99);
-        radio.shouldIncreaseVolume();
-        Assertions.assertEquals(100, radio.getCurrentVolume());
+        if (currentVolume == maxVolume) {
+            return;
+        }
+        ++currentVolume;
     }
 
-    @Test
-    public void shouldNotIncreaseVolume() {
-        radio.setCurrentVolume(100);
-        radio.shouldReduceVolume();
-        Assertions.assertEquals(100, radio.getCurrentVolume());
+    public void shouldReduceVolume() {
+
+        if (currentVolume == minVolume) {
+            return;
+        }
+        --currentVolume;
     }
 
-    @Test
-    public void shouldNotSetVolumeUnderMinimum() {
-        radio.setCurrentVolume(-101);
-        Assertions.assertEquals(0, radio.getCurrentVolume());
+    public void shouldIncreaseStation() {
+
+        if (currentStation == maxStation) {
+            currentStation = minStation;
+            return;
+        }
+        ++currentStation;
     }
 
-    @Test
-    public void shouldNotSetVolumeOverMaximum() {
-        radio.setCurrentVolume(101);
-        Assertions.assertEquals(0, radio.getCurrentVolume());
+    public void shouldReduceStation() {
+        if (currentStation == minStation) {
+            currentStation = maxStation;
+            return;
+        }
+        --currentStation;
+    }
+
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentStation(int currentStation) {
+        if (currentStation > maxStation || currentStation < minStation) {
+            this.currentStation = minStation;
+            return;
+        }
+        this.currentStation = currentStation;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > maxVolume || currentVolume < minVolume) {
+            this.currentVolume = minVolume;
+            return;
+        }
+
+        this.currentVolume = currentVolume;
     }
 }

@@ -29,7 +29,7 @@ public class Radio {
         ++currentVolume;
     }
 
-    public void shouldReduceVolume() {
+    public void shouldDecreaseVolume() {
 
         if (currentVolume == minVolume) {
             return;
@@ -46,7 +46,7 @@ public class Radio {
         ++currentStation;
     }
 
-    public void shouldReduceStation() {
+    public void shouldDecreaseStation() {
         if (currentStation == minStation) {
             currentStation = maxStation;
             return;

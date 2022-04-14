@@ -45,7 +45,7 @@ class RadioTest {
     @Test
     public void shouldDecreaseStation() {
         radio.setCurrentStation(1);
-        radio.shouldReduceStation();
+        radio.shouldDecreaseStation();
         Assertions.assertEquals(0, radio.getCurrentStation());
     }
 
@@ -60,20 +60,20 @@ class RadioTest {
 
     @Test
     public void shouldDecreaseStationWhenCurrent0() {
-        radio.shouldReduceStation();
+        radio.shouldDecreaseStation();
         Assertions.assertEquals(10, radio.getCurrentStation());
     }
 
     @Test
     public void shouldNotDecreaseVolume0() {
-        radio.shouldReduceVolume();
+        radio.shouldDecreaseVolume();
         Assertions.assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldDecreaseVolume() {
         radio.setCurrentVolume(1);
-        radio.shouldReduceVolume();
+        radio.shouldDecreaseVolume();
         Assertions.assertEquals(0, radio.getCurrentVolume());
     }
 
@@ -87,7 +87,7 @@ class RadioTest {
     @Test
     public void shouldNotIncreaseVolume() {
         radio.setCurrentVolume(100);
-        radio.shouldReduceVolume();
+        radio.shouldIncreaseVolume();
         Assertions.assertEquals(100, radio.getCurrentVolume());
     }
 

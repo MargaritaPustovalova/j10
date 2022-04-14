@@ -1,6 +1,8 @@
 package ru.netology;
 
 
+
+
 public class Radio {
 
     private int currentStation;
@@ -14,7 +16,7 @@ public class Radio {
         ++currentVolume;
     }
 
-    public void shouldReduceVolume() {
+    public void shouldDecreaseVolume() {
         int minVolume = 0;
         if (currentVolume == minVolume) {
             return;
@@ -32,7 +34,7 @@ public class Radio {
         ++currentStation;
     }
 
-    public void shouldReduceStation() {
+    public void shouldDecreaseStation() {
         int maxStation = 9;
         int minStation = 0;
         if (currentStation == minStation) {
@@ -45,6 +47,7 @@ public class Radio {
     public int getCurrentStation() {
         return currentStation;
     }
+
 
     public int getCurrentVolume() {
         return currentVolume;

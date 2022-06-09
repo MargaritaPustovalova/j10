@@ -1,4 +1,4 @@
-9package ru.netology;
+package ru.netology;
 
 
 public class Radio {
@@ -8,7 +8,7 @@ public class Radio {
     private int minVolume = 0;
     private int maxStation = 9;
     private int minStation = 0;
-
+   
     public Radio(int currentStation, int currentVolume, int minStation, int maxStation, int maxVolume, int minVolume) {
         this.currentStation = currentStation;
         this.currentVolume = currentVolume;
@@ -20,6 +20,10 @@ public class Radio {
 
     public Radio() {
 
+    }
+    
+    public Radio(int amountStation) {
+        this.maxStaton = maxStation;
     }
 
     public void shouldIncreaseVolume() {
